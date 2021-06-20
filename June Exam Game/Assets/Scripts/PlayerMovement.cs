@@ -22,8 +22,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void PlayerInput()
     {
-        movement.x = Input.GetAxis("Horizontal");
-        movement.y = Input.GetAxis("Vertical");
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
 
         playerRB.MovePosition(playerRB.position + movement * playerSpeed * Time.fixedDeltaTime);
        
