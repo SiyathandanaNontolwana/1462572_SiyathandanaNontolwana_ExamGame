@@ -6,44 +6,43 @@ public class SusanPathfinder : MonoBehaviour
 {
     //Variables
     public float susanSpeed = 4.5f;
-    public int randomLocation;
+
+
 
     //Total target locations
     public Transform [] totalTargetLocations;
 
+    //Location info from locationtracker script
+    Transform [] locationArray;
+    int spotSelected;
 
     // Start is called before the first frame update
     void Start()
     {
-        randomLocation = Random.Range(0, totalTargetLocations.Length);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-      
+        
+        transform.position = totalTargetLocations[spotSelected].transform.position;
     }
 
     private void FixedUpdate()
     {
-        transform.position = Vector2.MoveTowards(transform.position, totalTargetLocations[randomLocation].position, susanSpeed * Time.fixedDeltaTime);
+        EnemyMove();
+        
     }
-
-    private void RayLocationChecker()
+    void EnemyMove()
     {
+        transform.position = Vector2.MoveTowards(transform.position, totalTargetLocations[spotSelected].transform.position, susanSpeed * Time.fixedDeltaTime);
 
+
+        if (transform.position == totalTargetLocations[spotSelected].transform.position)
+        {
+            spotSelected++;
+        }
+
+        if(spotSelected == totalTargetLocations.Length)
+        {
+            spotSelected = 0;
+        }
     }
 
-    public void LocationStorer()
-    {
-
-    }
-
-    private void OnDrawGizmos()
-    {
-        //Gizmos.color = Color.red;
-        //Gizmos.DrawLine(rayCastOrigin.position, totalTargetLocations[1].position);
-        //Gizmos.DrawLine(rayCastOrigin.position, totalTargetLocations[0].position);
-    }
+   
 }
