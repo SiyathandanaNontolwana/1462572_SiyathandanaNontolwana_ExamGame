@@ -6,7 +6,7 @@ public class CustomerPatrol : MonoBehaviour
 {
     public Transform[] totalLocations;
     public float customerSpeed = 3f;
-
+    
     //Location info from locationtracker script
     int spotSelected;
 
@@ -22,6 +22,7 @@ public class CustomerPatrol : MonoBehaviour
         EnemyMove();
 
     }
+
     void EnemyMove()
     {
         transform.position = Vector2.MoveTowards(transform.position, totalLocations[spotSelected].position, customerSpeed * Time.fixedDeltaTime);
@@ -43,4 +44,23 @@ public class CustomerPatrol : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Player") == true)
+        {
+            Debug.Log("Player detected");
+            CustomerDialogue();
+        }
+        else
+        {
+            return;
+        }
+    }
+
+    private void CustomerDialogue()
+    {
+
+    }
+
 }

@@ -31,6 +31,10 @@ public class SusanPathfinder : MonoBehaviour
     {
         transform.position = Vector2.MoveTowards(transform.position, totalTargetLocations[spotSelected].transform.position, susanSpeed * Time.fixedDeltaTime);
 
+        //Rotate and face next location
+        Vector3 dir = totalTargetLocations[spotSelected].position - transform.position;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
         if (transform.position == totalTargetLocations[spotSelected].transform.position)
         {
@@ -43,5 +47,14 @@ public class SusanPathfinder : MonoBehaviour
         }
     }
 
-   
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player") == true)
+        {
+            Debug.Log("Player detected");
+        }
+    }
+
+
 }
