@@ -13,7 +13,6 @@ public class SusanPathfinder : MonoBehaviour
     public Transform [] totalTargetLocations;
 
     //Location info from locationtracker script
-    Transform [] locationArray;
     int spotSelected;
 
     // Start is called before the first frame update
