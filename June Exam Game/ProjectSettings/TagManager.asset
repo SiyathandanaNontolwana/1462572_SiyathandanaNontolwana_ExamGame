@@ -9,6 +9,7 @@ TagManager:
   - Customer
   - Boss
   - Interactable
+  - WinTrig
   layers:
   - Default
   - TransparentFX

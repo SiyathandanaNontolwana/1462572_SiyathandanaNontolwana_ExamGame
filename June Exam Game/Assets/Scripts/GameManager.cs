@@ -5,9 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-
-    public void GameOver()
+    private void Update()
     {
-        SceneManager.LoadScene("End Game");
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
+
 }

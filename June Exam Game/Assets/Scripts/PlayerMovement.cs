@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -13,18 +14,23 @@ public class PlayerMovement : MonoBehaviour
     public GameObject interactableObject3;
     public GameObject Door;
 
+    private bool iO1, iO2, iO3;
+
     private int indexNum;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        iO1 = true;
+        iO2 = true;
+        iO3 = true;
     }
     
     // Update is called once per frame
     void Update()
     {
         PlayerInput();
+        UnlockDoor();
     }
 
     private void PlayerInput()
@@ -40,28 +46,32 @@ public class PlayerMovement : MonoBehaviour
             {
                 //Collect object
                 interactableObject.SetActive(false);
+                iO1 = false;
             }
 
             if (Vector2.Distance(transform.position, interactableObject2.transform.position) < 1f)
             {
                 //Collect object
+                
                 interactableObject2.SetActive(false);
+                iO2 = false;
             }
 
             if (Vector2.Distance(transform.position, interactableObject3.transform.position) < 1f)
             {
                 //Collect object
                 interactableObject3.SetActive(false);
+                iO3 = false;
             }
         }
     }
 
     public void UnlockDoor()
     {
-        if(interactableObject == false && interactableObject2 == false && interactableObject3 == false)
+        if(iO1 == false && iO2 == false && iO3 == false)
         {
             //Open Door
-            Door.SetActive(false);
+            Destroy(Door);
         }
     }
 
@@ -69,11 +79,30 @@ public class PlayerMovement : MonoBehaviour
     {
         if(collision.CompareTag("Customer"))
         {
-            playerSpeed = 0f;
+            if(iO1 == false)
+            {
+                interactableObject.SetActive(true);
+                iO1 = true;
+            }
+            else if (iO2 == false)
+            {
+                interactableObject2.SetActive(true);
+                iO2 = true;
+            }
+            else if (iO3 == false)
+            {
+                interactableObject2.SetActive(true);
+                iO2 = true;
+            }
+            else
+            {
+                return;
+            }
         }
-        else
+
+        if(collision.CompareTag("WinTrig"))
         {
-            playerSpeed = 5f;
+            SceneManager.LoadScene("End Game");
         }
     }
 }
