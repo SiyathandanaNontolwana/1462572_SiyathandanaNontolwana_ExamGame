@@ -1,14 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SusanPathfinder : MonoBehaviour
 {
     //Variables
     public float susanSpeed = 4.5f;
-
-
-
+    public Transform playerPos;
+    GameManager gm;
     //Total target locations
     public Transform [] totalTargetLocations;
 
@@ -18,7 +18,8 @@ public class SusanPathfinder : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        gm = GetComponent<GameManager>();
+        playerPos = playerPos.transform;
         transform.position = totalTargetLocations[spotSelected].transform.position;
     }
 
@@ -52,8 +53,11 @@ public class SusanPathfinder : MonoBehaviour
     {
         if (collision.CompareTag("Player") == true)
         {
-            Debug.Log("Player detected");
+            Debug.Log("Make noise");
+
+            SceneManager.LoadScene("End Game");
         }
+
     }
 
 

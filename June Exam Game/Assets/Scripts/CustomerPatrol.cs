@@ -1,19 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CustomerPatrol : MonoBehaviour
 {
     public Transform[] totalLocations;
+
+    PlayerMovement playerM;
     public float customerSpeed = 3f;
-    
+
     //Location info from locationtracker script
     int spotSelected;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        playerM = GetComponent<PlayerMovement>();
         transform.position = totalLocations[spotSelected].transform.position;
     }
 
@@ -44,23 +47,4 @@ public class CustomerPatrol : MonoBehaviour
             }
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.CompareTag("Player") == true)
-        {
-            Debug.Log("Player detected");
-            CustomerDialogue();
-        }
-        else
-        {
-            return;
-        }
-    }
-
-    private void CustomerDialogue()
-    {
-
-    }
-
 }

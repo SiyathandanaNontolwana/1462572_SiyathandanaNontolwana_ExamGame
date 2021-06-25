@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2068994919237850870}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.7108642, y: 1.7108642, z: 1.7108642}
+  m_LocalPosition: {x: 0.0022, y: 0.013, z: 0}
+  m_LocalScale: {x: 0.55439246, y: 0.56726635, z: 2.3077846}
   m_Children: []
   m_Father: {fileID: 6965535500084870362}
   m_RootOrder: 0
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 731189950}
   m_Layer: 0
   m_Name: Customer
-  m_TagString: Untagged
+  m_TagString: Customer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,7 +110,7 @@ Transform:
   m_GameObject: {fileID: 8563324590389007326}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.02, y: 1.49, z: -2.7292001}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children:
   - {fileID: 8728350193077547055}
   m_Father: {fileID: 0}
@@ -156,8 +156,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: de3d285dc0a6a8948b58a7a3c2572526, type: 3}
-  m_Color: {r: 0.9528302, g: 0, b: 0.92118555, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 9a5143fe64f2a0444b3cf2bf456445fc, type: 3}
+  m_Color: {r: 0.9594884, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -198,4 +198,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.00000011920929, y: 0}
   serializedVersion: 2
-  m_Radius: 0.85038316
+  m_Radius: 0.27

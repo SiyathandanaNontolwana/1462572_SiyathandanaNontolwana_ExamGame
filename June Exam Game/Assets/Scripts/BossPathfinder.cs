@@ -1,24 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossPathfinder : MonoBehaviour
 {
 
     //Variables
     public float bossSpeed = 4.5f;
-
+    SusanPathfinder susanAI;
+    GameManager gm;
 
     //Total target locations
     public Transform[] totalLocations;
-
+   
     //Location info from locationtracker script
     int spotSelected;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        gm = GetComponent<GameManager>();
+        susanAI = GetComponent<SusanPathfinder>();
         transform.position = totalLocations[spotSelected].transform.position;
     }
 
@@ -29,7 +32,9 @@ public class BossPathfinder : MonoBehaviour
     }
     void EnemyMove()
     {
+       
         transform.position = Vector2.MoveTowards(transform.position, totalLocations[spotSelected].position, bossSpeed * Time.fixedDeltaTime);
+
 
         //Rotate and face next location
         Vector3 dir = totalLocations[spotSelected].position - transform.position;
@@ -53,7 +58,8 @@ public class BossPathfinder : MonoBehaviour
     {
         if (collision.CompareTag("Player") == true)
         {
-            Debug.Log("Player detected");
+            Debug.Log("Game Over");
+            SceneManager.LoadScene("End Game");
         }
     }
 }
